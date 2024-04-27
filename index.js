@@ -4,7 +4,41 @@ const fs = require('fs');
 
 // TODO: Create an array of questions for user input
 const questions = [
-    'What is the project title?',
+    {
+        type: 'input',
+        name: 'title',
+        message: 'What is the project title?',
+        validate: function (input, answers) {
+            input ? true : console.log('Error: Must provide a project title');
+        }
+    },
+    {
+        type: 'input select checkbox confirm password expand editor rawlist '
+        name: 'for variable'
+        message:
+        default:
+        choices: 'for select type'
+        validate: 
+        when: 'add function to only ask the question under certain conditions'
+    },
+    {
+        type: 'input select checkbox confirm password expand editor rawlist '
+        name: 'for variable'
+        message:
+        default:
+        choices: 'for select type'
+        validate: 
+        when: 'add function to only ask the question under certain conditions'
+    },
+    {
+        type: 'input select checkbox confirm password expand editor rawlist '
+        name: 'for variable'
+        message:
+        default:
+        choices: 'for select type'
+        validate: 
+        when: 'add function to only ask the question under certain conditions'
+    },
     'What is the project description?',
     'What is the Table of Contents?',
     'What are the installation requirements?',
