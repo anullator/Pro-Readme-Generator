@@ -9,7 +9,13 @@ const questions = [
     'What is the Table of Contents?',
     'What are the installation requirements?',
     'What is the use case for this application?',
-    'What is the license for this project?',
+    {
+        type: 'list',
+        message: 'What is the license for this project?',
+        name: 'license',
+        choices: ['Apache 2.0', 'MIT', 'GNU GPL v3', 'CC0 1.0', 'Eclipse Public License 1.0'],
+        default: 'MIT'
+    },
     'What are the contribution guidelines?',
     'What are the testing instructions?',
     'Enter all questions:',
