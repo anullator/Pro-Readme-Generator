@@ -22,13 +22,13 @@ function renderLicenseSection(license) {}
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
-    \n\n## Description
+    \n## Description
 
-    \n\n${data.description}
+    \n${data.description}
     
-    \n\n## Table of Contents (Optional)
+    \n## Table of Contents (Optional)
     
-    \n\n${data['table-of-contents']}
+    \n${data['table-of-contents']}
     
       //TODO: Render dynamically based on sections added
     - [Installation](#installation)
@@ -40,13 +40,13 @@ function generateMarkdown(data) {
       [How To Contribute](#how-to-contribute)
       [Tests](#tests)
     
-    \n\n## Installation
+    \n## Installation
     
-    \n\n${data.installation}
+    \n${data.installation}
     
-    \n\n## Usage
+    \n## Usage
     
-    \n\n${data.usage}
+    \n${data.usage}
 //    Provide instructions and examples for use. Include screenshots as needed.
     
 //    To add a screenshot, create an assets/images folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
@@ -55,9 +55,9 @@ function generateMarkdown(data) {
     
 //    This is the link to the deployed webpage: _webpage url_
     
-    \n\n## Credits
+    \n## Credits
 
-    \n\n${data.credits}
+    \n${data.credits}
     
 //    List your collaborators, if any, with links to their GitHub profiles.
     
@@ -65,9 +65,9 @@ function generateMarkdown(data) {
     
 //    If you followed tutorials, include links to those here as well.
     
-    \n\n## License
+    \n## License
     
-    \n\n${data.license}
+    \n${data.license}
 
     //TODO: create array of license markdown for each license
     
@@ -81,9 +81,9 @@ function generateMarkdown(data) {
     
 //    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     
-    \n\n## Badges
+    \n## Badges
 
-    \n\n${data.badges}
+    \n${data.badges}
 
     TODO: create a checkbox for badges so I can dynamically add and render any applicable badges
     
@@ -91,18 +91,18 @@ function generateMarkdown(data) {
     
 //    Badges aren't necessary, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
     
-    \n\n ## Features
+    \n ## Features
     
-    \n\n${data.features}
+    \n${data.features}
     
-    \n\n## How to Contribute
+    \n## How to Contribute
     
-    \n\n${data.contribute}
+    \n${data.contribute}
 //    If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
     
-    \n\n## Tests
+    \n## Tests
 
-    \n\n${data.tests}
+    \n${data.tests}
     
 //    Go the extra mile and write tests for your application. Then provide examples on how to run them here.
 `;
