@@ -23,8 +23,11 @@ function renderLicenseSection(license) {}
 function renderTableOfContents(data) {
   console.log(data);
   let contentsMd;
+  if (data.description) {
+    contentsMd+= `- [Description](#description)\n`;
+  }
   if (data.installation) {
-    contentsMd+= `- [Installation](#installation)\n`
+    contentsMd+= `- [Installation](#installation)\n`;
   }
   if (data.usage) {
     contentsMd+= `- [Usage](#usage)\n`;
@@ -55,7 +58,7 @@ function generateMarkdown(data) {
 
     let tableContents = renderTableOfContents(data);
     if (tableContents) {
-      tableContents = `## Table of Contents\n${tableContents}`;
+      tableContents = `## Table of Contents\n\n${tableContents}`;
     }
 
   return `# ${data.title}

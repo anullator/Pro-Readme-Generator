@@ -5,6 +5,7 @@ const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
+// TITLE
     {
         type: 'input',
         name: 'title',
@@ -13,15 +14,15 @@ const questions = [
             return input ? true : console.error('\n\u{26A0} Error: Must provide a project title');
         }
     },
-    // {
-    //     type: 'input select checkbox confirm password expand editor rawlist '
-    //     name: 'for variable'
-    //     message:
-    //     default:
-    //     choices: 'for select type'
-    //     validate: 
-    //     when: 'add function to only ask the question under certain conditions'
-    // },
+// DESCRIPTION
+    {
+        type: 'input',
+        name: 'description',
+        message: 'Enter description of project:',
+        validate: function (input) {
+            return input ? true : console.error('\n\u{26A0} Error: Must provide a description');
+        }
+    },
     // {
     //     type: 'input select checkbox confirm password expand editor rawlist '
     //     name: 'for variable'
