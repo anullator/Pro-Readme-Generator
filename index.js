@@ -41,7 +41,6 @@ const questions = [
     //     when: 'add function to only ask the question under certain conditions'
     // },
     // 'What is the project description?',
-    // 'What is the Table of Contents?',
     // 'What are the installation requirements?',
     // 'What is the use case for this application?',
     {
@@ -56,18 +55,26 @@ const questions = [
     // 'Enter all questions:',
     // 'What is your github username?',
     // 'What is your email address?'
+
+//  TABLE OF CONTENTS PROMPT - keep ToC questions last!!!!
+    {
+        type: 'list',
+        name: 'table-of-contents',
+        message: 'Create a Table of Contents?',
+        choices: ['Yes', 'No'],
+        default: 'Yes',
+    },
 ];
 
-// TODO: Create a function to write README file
+// function to write README file
 function writeToFile(fileName, data) {
 
-    // console.log(`data type: ${typeof data}`);
     const md = generateMarkdown(data);
 
     fs.writeFile(fileName, md, (error) => error ? console.log(error) : console.log('Successfully wrote README!'));
 }
 
-// TODO: Create a function to initialize app
+// function to initialize app
 async function init() {
 
     // store prompt answers
