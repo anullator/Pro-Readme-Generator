@@ -19,33 +19,52 @@ function renderLicenseLink(license) {}
 // If there is no license, return an empty string
 function renderLicenseSection(license) {}
 
+// TODO: Create function to dynamically render table of contents based on the names in the answers sections
+function renderTableOfContents(data) {
+  console.log(data);
+  let contentsMd;
+  if (data.installation) {
+    contentsMd+= `- [Installation](#installation)\n`
+  }
+  if (data.usage) {
+    contentsMd+= `- [Usage](#usage)\n`;
+  }
+  if (data.credits) {
+    contentsMd+= `- [Credits](#credits)\n`;
+  }
+  if (data.license) {
+    contentsMd+= `- [License](#license)\n`;
+  }
+  if (data.badges) {
+    contentsMd+= `- [Badges](#badges)\n`;
+  }
+  if (data.features) {
+    contentsMd+= `- [Features](#features)\n`;
+  }
+  if (data['how-to-contribute']) {
+    contentsMd+= `- [How To Contribute](#how-to-contribute)\n`;
+  }
+  if (data.tests) {
+    contentsMd+= `- [Tests](#tests)\n`;
+  }
+  return contentsMd;
+}
+
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+
+    let tableContents = renderTableOfContents(data);
+    if (tableContents) {
+      tableContents = `## Table of Contents\n${tableContents}`;
+    }
+
   return `# ${data.title}
     \n## Description
-
     \n${data.description}
-    
-    \n## Table of Contents (Optional)
-    
-    \n${data['table-of-contents']}
-    
-      //TODO: Render dynamically based on sections added
-    - [Installation](#installation)
-    - [Usage](#usage)
-    - [Credits](#credits)
-    - [License](#license)
-      [Badges](#badges)
-      [Features](#features)
-      [How To Contribute](#how-to-contribute)
-      [Tests](#tests)
-    
+    \n${tableContents}
     \n## Installation
-    
     \n${data.installation}
-    
     \n## Usage
-    
     \n${data.usage}
 //    Provide instructions and examples for use. Include screenshots as needed.
     
@@ -56,7 +75,6 @@ function generateMarkdown(data) {
 //    This is the link to the deployed webpage: _webpage url_
     
     \n## Credits
-
     \n${data.credits}
     
 //    List your collaborators, if any, with links to their GitHub profiles.
@@ -66,7 +84,6 @@ function generateMarkdown(data) {
 //    If you followed tutorials, include links to those here as well.
     
     \n## License
-    
     \n${data.license}
 
     //TODO: create array of license markdown for each license
