@@ -23,6 +23,7 @@ const questions = [
             return input ? true : console.error('\n\u{26A0} Error: Must provide a description');
         }
     },
+// INSTALLATION
     {
         type: 'input',
         name: 'installation',
@@ -31,7 +32,16 @@ const questions = [
             return input ? true : console.error('\n\u{26A0} Error: Must provide installation instructions');
         }
     },
-    // {
+// USAGE
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'How is this project used?',
+        validate: function (input) {
+            return input ? true : console.error('\n\u{26A0} Error: Must provide usage instructions');
+        }
+    },
+        // {
     //     type: 'input select checkbox confirm password expand editor rawlist '
     //     name: 'for variable'
     //     message:
@@ -40,9 +50,24 @@ const questions = [
     //     validate: 
     //     when: 'add function to only ask the question under certain conditions'
     // },
-    // 'What is the project description?',
-    // 'What are the installation requirements?',
-    // 'What is the use case for this application?',
+        // {
+    //     type: 'input select checkbox confirm password expand editor rawlist '
+    //     name: 'for variable'
+    //     message:
+    //     default:
+    //     choices: 'for select type'
+    //     validate: 
+    //     when: 'add function to only ask the question under certain conditions'
+    // },
+        // {
+    //     type: 'input select checkbox confirm password expand editor rawlist '
+    //     name: 'for variable'
+    //     message:
+    //     default:
+    //     choices: 'for select type'
+    //     validate: 
+    //     when: 'add function to only ask the question under certain conditions'
+    // },
     {
         type: 'list',
         message: 'What is the license for this project?',
