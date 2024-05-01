@@ -22,7 +22,7 @@ function renderLicenseSection(license) {}
 // TODO: Create function to dynamically render table of contents based on the names in the answers sections
 function renderTableOfContents(data) {
   console.log(data);
-  let contentsMd;
+  let contentsMd = '';
   if (data.description) {
     contentsMd+= `- [Description](#description)\n`;
   }
