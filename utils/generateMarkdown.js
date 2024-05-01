@@ -102,7 +102,6 @@ function generateMarkdown(data) {
 //    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     
     \n## Badges
-
     \n${data.badges}
 
     TODO: create a checkbox for badges so I can dynamically add and render any applicable badges
@@ -112,19 +111,17 @@ function generateMarkdown(data) {
 //    Badges aren't necessary, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
     
     \n ## Features
-    
     \n${data.features}
-    
     \n## How to Contribute
-    
     \n${data.contribute}
 //    If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
     
     \n## Tests
-
     \n${data.tests}
     
-//    Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+//    Go the extra mile and write tests for your application. Then provide examples on how to run them here.{
+    \n## Questions
+    \n${data.questions}
 `;
 }
 
