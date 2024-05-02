@@ -57,7 +57,8 @@ function generateMarkdown(data) {
     }
 
   return `# ${data.title}
-    \n## Description
+    \n## Description 
+    \n${renderLicenseBadge(data.license)}
     \n${data.description}
     \n${tableContents}
     \n## Installation
