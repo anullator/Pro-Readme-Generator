@@ -1,4 +1,4 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
+// Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
     const badges = {
@@ -11,13 +11,14 @@ function renderLicenseBadge(license) {
     return license ? badges[license] : '';
 }
 
+// Get the current year
 function getYear() {
   const currDate = new Date();
   const year = currDate.getFullYear();
   return year;
 }
 
-// TODO: Create a function that returns the license section of README
+// Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license, username) {
   const licenseContent = {
@@ -37,9 +38,8 @@ function renderLicenseSection(license, username) {
   return license ? licenseContent[license] : '';
 }
 
-// TODO: Create function to dynamically render table of contents based on the names in the answers sections
+// Create function to dynamically render table of contents based on the names in the answers sections
 function renderTableOfContents(data) {
-  console.log(data); // TODO:: REMOOVE THIS CONSOLE LOG
   let contentsMd = '';
 
   // adds table contents for each section added by the prompts
@@ -57,23 +57,23 @@ function renderTableOfContents(data) {
   return contentsMd;
 }
 
-// TODO: Create a function to generate markdown for README
+// Create a function to generate markdown for README
 function generateMarkdown(data) {
-
-    let tableContents = renderTableOfContents(data);
-    if (tableContents) {
-      tableContents = `## Table of Contents\n\n${tableContents}`;
-    }
+  let tableContents = '';
+    data.tableContents === 'Yes' ? tableContents = renderTableOfContents(data) : '';
 
   return `# ${data.title}
     \n${renderLicenseBadge(data.license)}
-    \n## Description 
+    \n## Description
     \n${data.description}
-    \n${tableContents}
-    \n## Installation
+    ${tableContents ? 
+    `\n## Table of Contents
+    \n${tableContents}\n` : ''
+  }\n## Installation
     \n${data.installation}
     \n## Usage
     \n${data.usage}
+    \nHere's a quick demo of the application in action: [ReadMe Generator Demo](https://drive.google.com/file/d/1mv0qmzdQmgBKFIud7W1fbwGfi72m12v8/view)
     ${data.credits ? // adds credits section if it exists
       `\n## Credits
       \n${data.credits}\n` : ''
@@ -91,7 +91,7 @@ function generateMarkdown(data) {
     }${data.badges ? // adds badges section if it exists
     `\n## Badges
     \n${data.badges}\n\nTODO: create a checkbox for badges so I can dynamically add and render any applicable badges\n\n//  ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)\n\n// Check out the badges hosted by [shields.io](https://shields.io/).\n` : ''
-  }\n## Questions
+    }\n## Questions
     \n[${data.githubUsername}](https://github.com/${data.githubUsername})
     \n${data.email}
     \n${data.contact}`;
