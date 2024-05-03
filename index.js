@@ -1,9 +1,9 @@
-// TODO: Include packages needed for this application
+// Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
-// TODO: Create an array of questions for user input
+// Create an array of questions for user input
 const questions = [
 // TITLE
     {
@@ -129,13 +129,13 @@ const questions = [
         message: 'Select badges to add:',
         choices: ['[placeholder 1]', '[placeholder 2]'],
         when: (answers) => {
-            return answers.addTests === 'Yes';
+            return answers.addBadges === 'Yes';
         }
     },
 //  TABLE OF CONTENTS
     {
         type: 'list',
-        name: 'table-of-contents',
+        name: 'tableContents',
         message: 'Create a Table of Contents?',
         default: 'Yes',
         choices: ['Yes', 'No']
