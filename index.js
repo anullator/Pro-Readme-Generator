@@ -93,7 +93,7 @@ const questions = [
         name: 'contribute',
         message: 'What are the contribution guidelines?',
         validate: function (input) {
-            return input ? true : console.error('\n\u{26A0} Error: Must provide features');
+            return input ? true : console.error('\n\u{26A0} Error: Must provide contribution guidelines');
         }
     },
 // TESTS

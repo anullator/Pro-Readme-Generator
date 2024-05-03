@@ -11,38 +11,47 @@ function renderLicenseBadge(license) {
     return license ? badges[license] : '';
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function getYear() {
+  const currDate = new Date();
+  const year = currDate.getFullYear();
+  return year;
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license, username) {
+  const licenseContent = {
+    'Apache 2.0': 
+        `Copyright ${getYear()} ${username}\n\nLicensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and limitations under the License.`,
+    'MIT': 
+        `Copyright ${getYear()} ${username}\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`,
+    'GNU GPL v3': 
+        `Copyright (C) ${getYear()} ${username}\n\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation either version 3 of the License, or (at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.`,
+    'CC0 1.0': 
+        `Copyright (C) ${getYear()} ${username}\n\nThe person who associated a work with this deed has dedicated the work to the public domain by waiving all of his or her rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.\n\nYou can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.`,
+    'Eclipse Public License 1.0': 
+        `Copyright (C) ${getYear()} ${username}\n\nTHE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE PUBLIC LICENSE (“AGREEMENT”). ANY USE, REPRODUCTION OR DISTRIBUTION OF THE PROGRAM CONSTITUTES RECIPIENT’S ACCEPTANCE OF THIS AGREEMENT.`,
+  }
+  return license ? licenseContent[license] : '';
+}
 
 // TODO: Create function to dynamically render table of contents based on the names in the answers sections
 function renderTableOfContents(data) {
-  console.log(data);
+  console.log(data); // TODO:: REMOOVE THIS CONSOLE LOG
   let contentsMd = '';
 
-  contentsMd+= `- [Description](#description)\n`
-  contentsMd+= `- [Installation](#installation)\n`
-  contentsMd+= `- [Usage](#usage)\n`
-  if (data.credits) {
-    contentsMd+= `- [Credits](#credits)\n`;
-  }
-
+  // adds table contents for each section added by the prompts
+  contentsMd+= `- [Description](#description)\n`;
+  contentsMd+= `- [Installation](#installation)\n`;
+  contentsMd+= `- [Usage](#usage)\n`;
+  data.credits ? contentsMd+= `- [Credits](#credits)\n`: '';
   contentsMd+= `- [License](#license)\n`;
-
-  if (data.features) {
-    contentsMd+= `- [Features](#features)\n`;
-  }
+  data.features ? contentsMd+= `- [Features](#features)\n`: '';
   contentsMd+= `- [How To Contribute](#how-to-contribute)\n`;
-  if (data.tests) {
-    contentsMd+= `- [Tests](#tests)\n`;
-  }
-  if (data.badges) {
-    contentsMd+= `- [Badges](#badges)\n`;
-  }
+  data.tests ? contentsMd+= `- [Tests](#tests)\n` : '';
+  data.badges ? contentsMd+= `- [Badges](#badges)\n`: '';
   contentsMd+= `- [Questions](#questions)`;
 
   return contentsMd;
@@ -57,70 +66,35 @@ function generateMarkdown(data) {
     }
 
   return `# ${data.title}
-    \n## Description 
     \n${renderLicenseBadge(data.license)}
+    \n## Description 
     \n${data.description}
     \n${tableContents}
     \n## Installation
     \n${data.installation}
     \n## Usage
     \n${data.usage}
-//    Provide instructions and examples for use. Include screenshots as needed.
-    
-//    To add a screenshot, create an assets/images folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
-    
-//    ![alt text](assets/images/screenshot.png)
-    
-//    This is the link to the deployed webpage: _webpage url_
-    
-    \n## Credits
-    \n${data.credits}
-    
-//    List your collaborators, if any, with links to their GitHub profiles.
-    
-//    If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-    
-//    If you followed tutorials, include links to those here as well.
-    
-    \n## License
-    \n${data.license}
-
-    //TODO: create array of license markdown for each license
-    
-//    MIT License
-    
- //   Copyright (c) 2024 Dany Goodwin
-    
-//    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-    
-//    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-    
-//    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-    
-    \n ## Features
-    \n${data.features}
-    \n## How to Contribute
-    \n${data.contribute}
-//    If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-    
-    \n## Tests
-    \n${data.tests}
-    
-//    Go the extra mile and write tests for your application. Then provide examples on how to run them here.
-    \n## Badges
-    \n${data.badges}
-
-    TODO: create a checkbox for badges so I can dynamically add and render any applicable badges
-    
-    //    ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-    
-    //    Badges aren't necessary, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-    
-    \n## Questions
+    ${data.credits ? // adds credits section if it exists
+      `\n## Credits
+      \n${data.credits}\n` : ''
+    }\n## License
+    \n${renderLicenseSection(data.license, data.githubUsername)}
+    ${data.features ? // adds features section if it exists
+    `\n ## Features
+    \n${data.features}\n` : ''
+    }${data.contribute ? // adds contribution instructions section if it exists
+    `\n## How to Contribute
+    \n${data.contribute}\n` : ''
+    }${data.tests ? // adds tests section if it exists
+    `\n## Tests
+    \n${data.tests}\n` : ''
+    }${data.badges ? // adds badges section if it exists
+    `\n## Badges
+    \n${data.badges}\n\nTODO: create a checkbox for badges so I can dynamically add and render any applicable badges\n\n//  ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)\n\n// Check out the badges hosted by [shields.io](https://shields.io/).\n` : ''
+  }\n## Questions
     \n[${data.githubUsername}](https://github.com/${data.githubUsername})
     \n${data.email}
-    \n${data.contact}
-  `;
+    \n${data.contact}`;
 }
 
 module.exports = generateMarkdown;
